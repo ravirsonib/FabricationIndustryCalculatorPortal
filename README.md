@@ -1,16 +1,89 @@
-# React + Vite
+# App UI Strucature
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Chain Link
+- Expanded Metal
+- Hexagonal Wiremesh
+- Perforated Sheet
+    |- Open Area (%) Calculation
+        |- Capsule Center to Center Hole
+        |- Capsule Staggered Triangular Hole
+        |- Hexagonal Staggered Triang...
+        |- Rectangular Center to Center ...
+        |- Rectangular Staggered Triang...
+        |- Round 45 deg. Staggered Trian...
+        |- Round 60 deg. Staggered Triang.
+        |- Round 90 deg center to center hole
+        |- Square Center to Center Hole
+        |- Square Staggered Triangular Hole
+    |- Weight Per Roll
+        |- Capsule Center to Center Hole
+        |- Capsule Staggered Triangular Hole
+        |- Hexagonal Staggered Triang...
+        |- Rectangular Center to Center ...
+        |- Rectangular Staggered Triang...
+        |- Round 45 deg. Staggered Trian...
+        |- Round 60 deg. Staggered Triang.
+        |- Round 90 deg center to center hole
+        |- Square Center to Center Hole
+        |- Square Staggered Triangular Hole
+    |- Weight Per 0D
+        |- Capsule Center to Center Hole
+        |- Capsule Staggered Triangular Hole
+        |- Hexagonal Staggered Triang...
+        |- Rectangular Center to Center ...
+        |- Rectangular Staggered Triang...
+        |- Round 45 deg. Staggered Trian...
+        |- Round 60 deg. Staggered Triang.
+        |- Round 90 deg center to center hole
+        |- Square Center to Center Hole
+        |- Square Staggered Triangular Hole
+    |- Weight Per OD less ID
+        |- Capsule Center to Center Hole
+        |- Capsule Staggered Triangular Hole
+        |- Hexagonal Staggered Triang...
+        |- Rectangular Center to Center ...
+        |- Rectangular Staggered Triang...
+        |- Round 45 deg. Staggered Trian...
+        |- Round 60 deg. Staggered Triang.
+        |- Round 90 deg center to center hole
+        |- Square Center to Center Hole
+        |- Square Staggered Triangular Hole
+- Wire Mesh
+    |- Dutch Woven Wire Mesh
+        |- Weight Per Role
+        |- Weight Per OD
+        |- Weight Per OD Less ID
+    |- Weight Per Role
+    |- Micron/MM/B.S.S/A.S.T.M/I.S.S/TYLER...
+    |- Open Area (%) Calculation
+        |- Harp Wire Mesh
+        |- Rectangular Wire Mesh
+        |- Square Wire Mesh
+    |- Mesh/Opening/Pitch Calculation
+        |- Mesh
+        |- Opening
+        |- Pitch (P)
+- Wire
+    |- Hexagonal Wire
+    |- Octagonal Wire
+    |- Re-Enforced Bar
+    |- Rectangle Wire
+    |- Round Wire
+    |- Square Wire
+    |- SWG to MM
+- Unit Calculator
+    |- Area
+    |- Length
+    |- Weight
+    |- Price
+        |- Area to Area
+        |- Area to Running Length
+- Welded Wiremesh
+    |- Mesh/Opening/Pitch Calculations
+        |- Opening
+        |- Pitch (P)
+        |- Mesh
+    |- Weight Per Role
+    |- Weight Per OD
+    |- Weight Per OD Less ID
+    |- Wire Required

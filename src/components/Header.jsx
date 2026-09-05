@@ -1,28 +1,45 @@
-import { useNavigate } from "react-router";
+import { ChevronLeft, Home, Calculator } from 'lucide-react';
 
-export default function Header({ title, showBack = false, showMenu = false }) {
-  const navigate = useNavigate();
+export default function Header({ path, onBack, onHome }) {
+  const currentTitle = path.length > 0 ? path[path.length - 1] : "Fabric Calculator";
 
   return (
-    <header className="bg-[#245b84] text-white p-4 flex items-center justify-between shadow-md">
-      <div className="flex items-center gap-3">
-        {showBack && (
-          <button onClick={() => navigate(-1)} className="p-1 cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-            </svg>
+    <header className="bg-white sticky top-0 z-50 w-full shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)]">
+      <div className="h-1 w-full bg-gradient-to-r from-brand-blue via-brand-orange to-brand-red"></div>
+      
+      <div className="flex items-center px-6 py-4 max-w-screen-2xl mx-auto">
+        {/* Back Button */}
+        {path.length > 0 && (
+          <button 
+            onClick={onBack} 
+            className="mr-4 p-2 text-slate-500 hover:text-brand-orange hover:bg-orange-50 rounded-full transition-all duration-200"
+            title="Go Back"
+          >
+            <ChevronLeft size={24} strokeWidth={2.5} />
           </button>
         )}
-        <h1 className="text-xl font-semibold tracking-wide">{title}</h1>
+        
+        {/* Logo/Icon & Title */}
+        <div className="flex items-center flex-1 gap-3 overflow-hidden">
+          <div className="bg-blue-50 p-2 rounded-lg text-brand-blue">
+            <Calculator size={22} strokeWidth={2.5} />
+          </div>
+          <h1 className="text-xl md:text-2xl font-bold text-slate-800 truncate">
+            {currentTitle}
+          </h1>
+        </div>
+        
+        {/* Home Button */}
+        {path.length > 0 && (
+          <button 
+            onClick={onHome} 
+            className="ml-4 flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-brand-blue hover:bg-blue-50 px-4 py-2 rounded-xl transition-all duration-200"
+          >
+            <Home size={18} strokeWidth={2.5} />
+            <span className="hidden sm:inline">Home</span>
+          </button>
+        )}
       </div>
-
-      {showMenu && (
-        <button className="p-1 cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
-      )}
     </header>
   );
 }
