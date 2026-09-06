@@ -55,6 +55,19 @@ import SquareCenterToCenterWpoliCalculator from './Calculator/weight_per_od_less
 import SquareStaggeredTriangularWpoliCalculator from './Calculator/weight_per_od_less_id_provider/SquareStaggeredTriangularWpoliCalculator';
 import RectangularStaggeredTriangularWprCalculator from './Calculator/weight_per_roll_provider/RectangularStaggeredTriangularWprCalculator ';
 
+// --- Dutch Woven Wire Mesh Calculators ---
+import DutchWovenWeightPerRollCalculator from './Calculator/dutch_woven_wire_mesh_provider/DutchWovenWeightPerRollCalculator';
+import DutchWovenWeightPerOdCalculator from './Calculator/dutch_woven_wire_mesh_provider/DutchWovenWeightPerOdCalculator';
+import DutchWovenWeightPerOdLessIdCalculator from './Calculator/dutch_woven_wire_mesh_provider/DutchWovenWeightPerOdLessIdCalculator';
+
+import HarpWireMeshOpenAreaCalculator from './Calculator/wire_mesh_provider/open_area_calculation_provider/HarpWireMeshOpenAreaCalculator';
+import RectangularWireMeshOpenAreaCalculator from './Calculator/wire_mesh_provider/open_area_calculation_provider/RectangularWireMeshOpenAreaCalculator';
+import SquareWireMeshOpenAreaCalculator from './Calculator/wire_mesh_provider/open_area_calculation_provider/SquareWireMeshOpenAreaCalculator';
+import MeshCalculation from './Calculator/wire_mesh_provider/mesh_opening_pitch_calculation_provider/MeshCalculation';
+import OpeningCalculation from './Calculator/wire_mesh_provider/mesh_opening_pitch_calculation_provider/OpeningCalculation';
+import PitchCalculation from './Calculator/wire_mesh_provider/mesh_opening_pitch_calculation_provider/PitchCalculation';
+import WireMeshWeightPerRollCalculator from './Calculator/wire_mesh_provider/WireMeshWeightPerRollCalculator';
+
 export default function CalculatorRenderer({ title, image, path }) {
   // Parent category check karne ke liye (taaki duplicate titles resolve ho sakein)
   const parentCategory = path && path.length > 1 ? path[path.length - 2] : null;
@@ -149,6 +162,46 @@ export default function CalculatorRenderer({ title, image, path }) {
     if (isCategory("Weight Per Roll")) return <SquareStaggeredTriangularWprCalculator title={title} image={image} />;
     if (isCategory("Less ID")) return <SquareStaggeredTriangularWpoliCalculator title={title} image={image} />;
     if (isCategory("Weight Per OD")) return <SquareStaggeredTriangularWpoCalculator title={title} image={image} />;
+    return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
+  }
+
+  if (isCategory("Dutch Woven Wire Mesh")) {
+    if (title === "Weight Per Roll") {
+      return <DutchWovenWeightPerRollCalculator title={title} image={image} />;
+    }
+    if (title === "Weight Per OD") {
+      return <DutchWovenWeightPerOdCalculator title={title} image={image} />;
+    }
+    if (title.toLowerCase().includes("less id")) {
+      return <DutchWovenWeightPerOdLessIdCalculator title={title} image={image} />;
+    }
+    return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
+  }
+
+  if (title === "Weight Per Role") {
+    if (isCategory("Wire Mesh")) return <WireMeshWeightPerRollCalculator title={title} image={image} />;
+    return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
+  }
+
+  if (title === "Harp Wire Mesh") {
+    if (isCategory("Open Area (%) Calculation")) return <HarpWireMeshOpenAreaCalculator title={title} image={image} />;
+    return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
+  }
+
+  if (title === "Rectangular Wire Mesh") {
+    if (isCategory("Open Area (%) Calculation")) return <RectangularWireMeshOpenAreaCalculator title={title} image={image} />;
+    return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
+  }
+
+  if (title === "Square Wire Mesh") {
+    if (isCategory("Open Area (%) Calculation")) return <SquareWireMeshOpenAreaCalculator title={title} image={image} />;
+    return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
+  }
+
+  if (isCategory("Mesh/Opening/Pitch Calculation")) {
+    if (title === "Mesh") return <MeshCalculation title={title} image={image} />;
+    if (title === "Opening") return <OpeningCalculation title={title} image={image} />;
+    if (title === "Pitch") return <PitchCalculation title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
