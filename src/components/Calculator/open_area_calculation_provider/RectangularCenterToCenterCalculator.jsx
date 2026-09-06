@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import CalculatorView from '../CalculatorView';
-import CustomInput from '../CustomInput';
+import CalculatorView from '../../CalculatorView';
+import CustomInput from '../../CustomInput';
 import { Maximize, Activity } from 'lucide-react';
 
 const convertToMm = (value, unit) => {
@@ -16,7 +16,7 @@ const convertToMm = (value, unit) => {
 
 const COMMON_UNITS = ['mm', 'cm', 'inch'];
 
-export default function CapsuleCenterToCenterCalculator({ title, image }) {
+export default function RectangularCenterToCenterCalculator({ title, image }) {
   // Input States
   const [widthHole, setWidthHole] = useState('');
   const [lengthHole, setLengthHole] = useState('');
@@ -29,7 +29,7 @@ export default function CapsuleCenterToCenterCalculator({ title, image }) {
   const [widthPitchUnit, setWidthPitchUnit] = useState('mm');
   const [lengthPitchUnit, setLengthPitchUnit] = useState('mm');
 
-  // Result State 
+  // Result State
   const [openAreaPercent, setOpenAreaPercent] = useState(0);
 
   useEffect(() => {
@@ -40,10 +40,8 @@ export default function CapsuleCenterToCenterCalculator({ title, image }) {
 
     if (wHole > 0 && lHole > 0 && wPitch > 0 && lPitch > 0) {
       const radius = wHole / 2;
-      
       const holeArea = ((lHole - wHole) * wHole) + (Math.PI * radius * radius);
       const pitchArea = wPitch * lPitch;
-      
       const openArea = (holeArea / pitchArea) * 100;
       
       setOpenAreaPercent(openArea);
@@ -57,7 +55,7 @@ export default function CapsuleCenterToCenterCalculator({ title, image }) {
   };
 
   return (
-    <CalculatorView title={title} image={image} description="Calculate the open area percentage for capsule center to center holes.">
+    <CalculatorView title={title} image={image} description="Calculate the open area percentage for rectangular center to center holes.">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
         
         <CustomInput 
