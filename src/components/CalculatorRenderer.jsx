@@ -29,93 +29,126 @@ import Round60StaggeredTriangularWprCalculator from './Calculator/weight_per_rol
 import Round90CenterToCenterWprCalculator from './Calculator/weight_per_roll_provider/Round90CenterToCenterWprCalculator';
 import SquareCenterToCenterWprCalculator from './Calculator/weight_per_roll_provider/SquareCenterToCenterWprCalculator';
 import SquareStaggeredTriangularWprCalculator from './Calculator/weight_per_roll_provider/SquareStaggeredTriangularWprCalculator';
+
+// --- Weight Per OD (WPO) Calculators ---
+import CapsuleCenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/CapsuleCenterToCenterWpoCalculator';
+import CapsuleStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/CapsuleStaggeredTriangularWpoCalculator';
+import HexagonalStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/HexagonalStaggeredTriangularWpoCalculator';
+import RectangularCenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/RectangularCenterToCenterWpoCalculator';
+import RectangularStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/RectangularStaggeredTriangularWpoCalculator';
+import Round45StaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/Round45StaggeredTriangularWpoCalculator';
+import Round60StaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/Round60StaggeredTriangularWpoCalculator';
+import Round90CenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/Round90CenterToCenterWpoCalculator';
+import SquareCenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/SquareCenterToCenterWpoCalculator';
+import SquareStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/SquareStaggeredTriangularWpoCalculator';
+
+// --- Weight Per OD Less ID (WPOLI) Calculators ---
+import CapsuleCenterToCenterWpoliCalculator from './Calculator/weight_per_od_less_id_provider/CapsuleCenterToCenterWpoliCalculator';
+import CapsuleStaggeredTriangularWpoliCalculator from './Calculator/weight_per_od_less_id_provider/CapsuleStaggeredTriangularWpoliCalculator';
+import HexagonalStaggeredTriangularWpoliCalculator from './Calculator/weight_per_od_less_id_provider/HexagonalStaggeredTriangularWpoliCalculator';
+import RectangularCenterToCenterWpoliCalculator from './Calculator/weight_per_od_less_id_provider/RectangularCenterToCenterWpoliCalculator';
+import RectangularStaggeredTriangularWpoliCalculator from './Calculator/weight_per_od_less_id_provider/RectangularStaggeredTriangularWpoliCalculator';
+import Round45StaggeredTriangularWpoliCalculator from './Calculator/weight_per_od_less_id_provider/Round45StaggeredTriangularWpoliCalculator';
+import Round60StaggeredTriangularWpoliCalculator from './Calculator/weight_per_od_less_id_provider/Round60StaggeredTriangularWpoliCalculator';
+import Round90CenterToCenterWpoliCalculator from './Calculator/weight_per_od_less_id_provider/Round90CenterToCenterWpoliCalculator';
+import SquareCenterToCenterWpoliCalculator from './Calculator/weight_per_od_less_id_provider/SquareCenterToCenterWpoliCalculator';
+import SquareStaggeredTriangularWpoliCalculator from './Calculator/weight_per_od_less_id_provider/SquareStaggeredTriangularWpoliCalculator';
 import RectangularStaggeredTriangularWprCalculator from './Calculator/weight_per_roll_provider/RectangularStaggeredTriangularWprCalculator ';
 
-// Weight Per OD
-import CapsuleCenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/CapsuleCenterToCenterWpoCalculator';
-import HexagonalStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/HexagonalStaggeredTriangularWpoCalculator';
-import Round45StaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/Round45StaggeredTriangularWpoCalculator';
-import RectangularStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/RectangularStaggeredTriangularWpoCalculator';
-import RectangularCenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/RectangularCenterToCenterWpoCalculator';
-
-
 export default function CalculatorRenderer({ title, image, path }) {
-  // Parent category check karne ke liye taaki duplicate titles resolve ho sakein
+  // Parent category check karne ke liye (taaki duplicate titles resolve ho sakein)
   const parentCategory = path && path.length > 1 ? path[path.length - 2] : null;
+
+  // Helfer function to safely match parent category variations
+  const isCategory = (matchString) => parentCategory && parentCategory.toLowerCase().includes(matchString.toLowerCase());
 
   // 1. Capsule Center to Center Hole
   if (title === "Capsule Center to Center Hole") {
-    if (parentCategory === "Open Area (%) Calculation") return <CapsuleCenterToCenterCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <CapsuleCenterToCenterWprCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per 0D") return <CapsuleCenterToCenterWpoCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <CapsuleCenterToCenterCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <CapsuleCenterToCenterWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <CapsuleCenterToCenterWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <CapsuleCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 2. Capsule Staggered Triangular Hole
   if (title === "Capsule Staggered Triangular Hole") {
-    if (parentCategory === "Open Area (%) Calculation") return <CapsuleStaggeredTriangularCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <CapsuleStaggeredTriangularWprCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per 0D") return <CapsuleCenterToCenterWpoCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <CapsuleStaggeredTriangularCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <CapsuleStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <CapsuleStaggeredTriangularWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <CapsuleStaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 3. Hexagonal Staggered Triangular
   if (title === "Hexagonal Staggered Triang...") {
-    if (parentCategory === "Open Area (%) Calculation") return <HexagonalStaggeredTriangularCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <HexagonalStaggeredTriangularWprCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per 0D") return <HexagonalStaggeredTriangularWpoCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <HexagonalStaggeredTriangularCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <HexagonalStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <HexagonalStaggeredTriangularWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <HexagonalStaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 4. Rectangular Center to Center
   if (title === "Rectangular Center to Center ...") {
-    if (parentCategory === "Open Area (%) Calculation") return <RectangularCenterToCenterCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <RectangularCenterToCenterWprCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per 0D") return <RectangularCenterToCenterWpoCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <RectangularCenterToCenterCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <RectangularCenterToCenterWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <RectangularCenterToCenterWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <RectangularCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 5. Rectangular Staggered Triangular
   if (title === "Rectangular Staggered Triang...") {
-    if (parentCategory === "Open Area (%) Calculation") return <RectangularStaggeredTriangularCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <RectangularStaggeredTriangularWprCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per 0D") return <RectangularStaggeredTriangularWpoCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <RectangularStaggeredTriangularCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <RectangularStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <RectangularStaggeredTriangularWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <RectangularStaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 6. Round 45 deg. Staggered
   if (title === "Round 45 deg. Staggered Trian...") {
-    if (parentCategory === "Open Area (%) Calculation") return <Round45StaggeredTriangularCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <Round45StaggeredTriangularWprCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per 0D") return <Round45StaggeredTriangularWpoCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <Round45StaggeredTriangularCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <Round45StaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <Round45StaggeredTriangularWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <Round45StaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 7. Round 60 deg. Staggered
   if (title === "Round 60 deg. Staggered Triang.") {
-    if (parentCategory === "Open Area (%) Calculation") return <Round60StaggeredTriangularCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <Round60StaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <Round60StaggeredTriangularCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <Round60StaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <Round60StaggeredTriangularWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <Round60StaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 8. Round 90 deg center to center
   if (title === "Round 90 deg center to center hole") {
-    if (parentCategory === "Open Area (%) Calculation") return <Round90CenterToCenterCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <Round90CenterToCenterWprCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <Round90CenterToCenterCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <Round90CenterToCenterWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <Round90CenterToCenterWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <Round90CenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 9. Square Center to Center
   if (title === "Square Center to Center Hole") {
-    if (parentCategory === "Open Area (%) Calculation") return <SquareCenterToCenterCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <SquareCenterToCenterWprCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <SquareCenterToCenterCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <SquareCenterToCenterWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <SquareCenterToCenterWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <SquareCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
   // 10. Square Staggered Triangular
   if (title === "Square Staggered Triangular Hole") {
-    if (parentCategory === "Open Area (%) Calculation") return <SquareStaggeredTriangularCalculator title={title} image={image} />;
-    if (parentCategory === "Weight Per Roll") return <SquareStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Open Area")) return <SquareStaggeredTriangularCalculator title={title} image={image} />;
+    if (isCategory("Weight Per Roll")) return <SquareStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (isCategory("Less ID")) return <SquareStaggeredTriangularWpoliCalculator title={title} image={image} />;
+    if (isCategory("Weight Per OD")) return <SquareStaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
@@ -140,7 +173,7 @@ function ComingSoon({ title, image }) {
         <Wrench size={48} strokeWidth={1.5} className="mb-4 text-slate-300" />
         <h3 className="text-xl font-bold text-slate-700">Coming Soon</h3>
         <p className="text-slate-500 mt-2 text-center max-w-sm">
-          The mathematical logic and input fields for <strong>{title}</strong> are currently being built.
+          The module for <strong>{title}</strong> is currently being built.
         </p>
       </div>
     </CalculatorView>
