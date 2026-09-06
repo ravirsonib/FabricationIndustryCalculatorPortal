@@ -31,6 +31,14 @@ import SquareCenterToCenterWprCalculator from './Calculator/weight_per_roll_prov
 import SquareStaggeredTriangularWprCalculator from './Calculator/weight_per_roll_provider/SquareStaggeredTriangularWprCalculator';
 import RectangularStaggeredTriangularWprCalculator from './Calculator/weight_per_roll_provider/RectangularStaggeredTriangularWprCalculator ';
 
+// Weight Per OD
+import CapsuleCenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/CapsuleCenterToCenterWpoCalculator';
+import HexagonalStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/HexagonalStaggeredTriangularWpoCalculator';
+import Round45StaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/Round45StaggeredTriangularWpoCalculator';
+import RectangularStaggeredTriangularWpoCalculator from './Calculator/weight_per_od_provider/RectangularStaggeredTriangularWpoCalculator';
+import RectangularCenterToCenterWpoCalculator from './Calculator/weight_per_od_provider/RectangularCenterToCenterWpoCalculator';
+
+
 export default function CalculatorRenderer({ title, image, path }) {
   // Parent category check karne ke liye taaki duplicate titles resolve ho sakein
   const parentCategory = path && path.length > 1 ? path[path.length - 2] : null;
@@ -39,6 +47,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   if (title === "Capsule Center to Center Hole") {
     if (parentCategory === "Open Area (%) Calculation") return <CapsuleCenterToCenterCalculator title={title} image={image} />;
     if (parentCategory === "Weight Per Roll") return <CapsuleCenterToCenterWprCalculator title={title} image={image} />;
+    if (parentCategory === "Weight Per 0D") return <CapsuleCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
@@ -46,6 +55,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   if (title === "Capsule Staggered Triangular Hole") {
     if (parentCategory === "Open Area (%) Calculation") return <CapsuleStaggeredTriangularCalculator title={title} image={image} />;
     if (parentCategory === "Weight Per Roll") return <CapsuleStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (parentCategory === "Weight Per 0D") return <CapsuleCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
@@ -53,6 +63,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   if (title === "Hexagonal Staggered Triang...") {
     if (parentCategory === "Open Area (%) Calculation") return <HexagonalStaggeredTriangularCalculator title={title} image={image} />;
     if (parentCategory === "Weight Per Roll") return <HexagonalStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (parentCategory === "Weight Per 0D") return <HexagonalStaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
@@ -60,6 +71,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   if (title === "Rectangular Center to Center ...") {
     if (parentCategory === "Open Area (%) Calculation") return <RectangularCenterToCenterCalculator title={title} image={image} />;
     if (parentCategory === "Weight Per Roll") return <RectangularCenterToCenterWprCalculator title={title} image={image} />;
+    if (parentCategory === "Weight Per 0D") return <RectangularCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
@@ -67,6 +79,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   if (title === "Rectangular Staggered Triang...") {
     if (parentCategory === "Open Area (%) Calculation") return <RectangularStaggeredTriangularCalculator title={title} image={image} />;
     if (parentCategory === "Weight Per Roll") return <RectangularStaggeredTriangularWprCalculator title={title} image={image} />;
+    if (parentCategory === "Weight Per 0D") return <RectangularStaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
@@ -74,6 +87,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   if (title === "Round 45 deg. Staggered Trian...") {
     if (parentCategory === "Open Area (%) Calculation") return <Round45StaggeredTriangularCalculator title={title} image={image} />;
     if (parentCategory === "Weight Per Roll") return <Round45StaggeredTriangularWprCalculator title={title} image={image} />;
+    if (parentCategory === "Weight Per 0D") return <Round45StaggeredTriangularWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
