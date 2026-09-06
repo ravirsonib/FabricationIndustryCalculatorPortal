@@ -87,6 +87,7 @@ import WeightPerRollWwCalculator from './Calculator/welded_wire_provider/WeightP
 import WeightPerOdWwCalculator from './Calculator/welded_wire_provider/WeightPerOdWwCalculator';
 import WeightPerOdLessIdWwCalculator from './Calculator/welded_wire_provider/WeightPerOdLessIdWwCalculator';
 import WiresRequiredWwCalculator from './Calculator/welded_wire_provider/WiresRequiredWwCalculator';
+import MeshComparisonChart from "./Calculator/MeshComparisonChart";
 
 
 
@@ -110,7 +111,7 @@ export default function CalculatorRenderer({ title, image, path }) {
       return (
         <CapsuleCenterToCenterWpoliCalculator title={title} image={image} />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return <CapsuleCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
@@ -132,7 +133,7 @@ export default function CalculatorRenderer({ title, image, path }) {
           image={image}
         />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return (
         <CapsuleStaggeredTriangularWpoCalculator title={title} image={image} />
       );
@@ -140,7 +141,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   }
 
   // 3. Hexagonal Staggered Triangular
-  if (title === "Hexagonal Staggered Triang...") {
+  if (title === "Hexagonal Staggered Triangular Hole") {
     if (isCategory("Open Area"))
       return (
         <HexagonalStaggeredTriangularCalculator title={title} image={image} />
@@ -159,7 +160,7 @@ export default function CalculatorRenderer({ title, image, path }) {
           image={image}
         />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return (
         <HexagonalStaggeredTriangularWpoCalculator
           title={title}
@@ -170,7 +171,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   }
 
   // 4. Rectangular Center to Center
-  if (title === "Rectangular Center to Center ...") {
+  if (title === "Rectangular Center to Center Hole") {
     if (isCategory("Open Area"))
       return (
         <RectangularCenterToCenterCalculator title={title} image={image} />
@@ -183,7 +184,7 @@ export default function CalculatorRenderer({ title, image, path }) {
       return (
         <RectangularCenterToCenterWpoliCalculator title={title} image={image} />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return (
         <RectangularCenterToCenterWpoCalculator title={title} image={image} />
       );
@@ -191,7 +192,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   }
 
   // 5. Rectangular Staggered Triangular
-  if (title === "Rectangular Staggered Triang...") {
+  if (title === "Rectangular Staggered Triangular Hole") {
     if (isCategory("Open Area"))
       return (
         <RectangularStaggeredTriangularCalculator title={title} image={image} />
@@ -210,7 +211,7 @@ export default function CalculatorRenderer({ title, image, path }) {
           image={image}
         />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return (
         <RectangularStaggeredTriangularWpoCalculator
           title={title}
@@ -221,7 +222,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   }
 
   // 6. Round 45 deg. Staggered
-  if (title === "Round 45 deg. Staggered Trian...") {
+  if (title === "Round 45° Staggered Triangular Hole.") {
     if (isCategory("Open Area"))
       return (
         <Round45StaggeredTriangularCalculator title={title} image={image} />
@@ -237,7 +238,7 @@ export default function CalculatorRenderer({ title, image, path }) {
           image={image}
         />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return (
         <Round45StaggeredTriangularWpoCalculator title={title} image={image} />
       );
@@ -245,7 +246,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   }
 
   // 7. Round 60 deg. Staggered
-  if (title === "Round 60 deg. Staggered Triang.") {
+  if (title === "Round 60° Staggered Triangular Hole") {
     if (isCategory("Open Area"))
       return (
         <Round60StaggeredTriangularCalculator title={title} image={image} />
@@ -261,7 +262,7 @@ export default function CalculatorRenderer({ title, image, path }) {
           image={image}
         />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return (
         <Round60StaggeredTriangularWpoCalculator title={title} image={image} />
       );
@@ -269,7 +270,7 @@ export default function CalculatorRenderer({ title, image, path }) {
   }
 
   // 8. Round 90 deg center to center
-  if (title === "Round 90 deg center to center hole") {
+  if (title === "Round 90° Center To Center Hole") {
     if (isCategory("Open Area"))
       return <Round90CenterToCenterCalculator title={title} image={image} />;
     if (isCategory("Weight Per Roll"))
@@ -278,7 +279,7 @@ export default function CalculatorRenderer({ title, image, path }) {
       return (
         <Round90CenterToCenterWpoliCalculator title={title} image={image} />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return <Round90CenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
@@ -293,7 +294,7 @@ export default function CalculatorRenderer({ title, image, path }) {
       return (
         <SquareCenterToCenterWpoliCalculator title={title} image={image} />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return <SquareCenterToCenterWpoCalculator title={title} image={image} />;
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
@@ -312,15 +313,19 @@ export default function CalculatorRenderer({ title, image, path }) {
       return (
         <SquareStaggeredTriangularWpoliCalculator title={title} image={image} />
       );
-    if (isCategory("Weight Per OD"))
+    if (isCategory("Weight Per 0D"))
       return (
         <SquareStaggeredTriangularWpoCalculator title={title} image={image} />
       );
     return <ComingSoon title={`${title} (${parentCategory})`} image={image} />;
   }
 
+  if (title.includes("Micron/MM/B.S.S") || title.includes("Tyler")) {
+    return <MeshComparisonChart title={title} image={image} />;
+  }
+
   if (isCategory("Dutch Woven Wire Mesh")) {
-    if (title === "Weight Per Roll") {
+    if (title === "Weight Per Role") {
       return <DutchWovenWeightPerRollCalculator title={title} image={image} />;
     }
     if (title === "Weight Per OD") {
