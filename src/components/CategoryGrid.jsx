@@ -97,7 +97,7 @@ export default function CategoryGrid({ items, onNavigate }) {
                     <img
                       src={item.image}
                       alt={key}
-                      className="w-full h-full object-contain p-6 sm:p-7 transition-transform duration-500 ease-out group-hover:scale-[1.06]"
+                      className="w-full h-full object-contain p-1 sm:p-1 transition-transform duration-500 ease-out group-hover:scale-[1.06]"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
