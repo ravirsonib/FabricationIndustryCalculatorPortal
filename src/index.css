@@ -17,6 +17,7 @@ html, body {
   background-color: #f4f7f9;
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 #root {

@@ -25,7 +25,7 @@ export default function App() {
         onHome={() => navigate('/')}
       />
 
-      <main className="flex-1 w-full overflow-y-auto">
+      <main id="app-scroll-container" className="flex-1 w-full overflow-y-auto">
         <Routes>
           {/* Main Home Route */}
           <Route 
